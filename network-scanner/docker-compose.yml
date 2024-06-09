@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  scanner:
+    build: .
+    volumes:
+      - logs:/logs
+    networks:
+      - scanner-network
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+
+networks:
+  scanner-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+
+volumes:
+  logs:

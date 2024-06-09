@@ -1,0 +1,13 @@
+//Budowanie nowych obrazów i tworzenie nowych kontenerów:
+docker-compose up --build --force-recreate
+
+//Usuwanie starych kontenerów i sieci:
+docker-compose down --remove-orphans
+
+// usunięcie wolumenu
+docker volume rm
+
+//usuniecie wysztkich kontenerów
+docker rm -vf $(docker ps -aq)
+//usuniecie wszystkich obrazów
+docker rmi -f $(docker images -a)
